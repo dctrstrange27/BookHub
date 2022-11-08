@@ -2,7 +2,10 @@ package com.example.jason_valley.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.jason_valley.R;
 import com.example.jason_valley.db.DataBase;
+import com.example.jason_valley.home.home;
 import com.example.jason_valley.usermodel.userModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -51,6 +55,13 @@ public class signup extends AppCompatActivity {
                 startActivity(goToSignIn);
             }
         });
+        Dialog diag = new Dialog(this);
+        diag.setContentView(R.layout.registered_successful);
+        diag.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +87,19 @@ public class signup extends AppCompatActivity {
                               if (!doesExist) {
                                   try {
                                       Boolean res = db.createUser(userModel);
+                                      diag.show();
+                                      Button btnOkay = diag.findViewById(R.id.okay);
+                                      btnOkay.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View view) {
+                                              Toast.makeText(signup.this, "Welcome "+user+" Thankyou! for Signing up!", Toast.LENGTH_LONG).show();
+                                              diag.dismiss();
+                                              Intent goToHome = new Intent(getApplicationContext(), home.class);
+                                              startActivity(goToHome);
+                                          }
+                                      });
                                       if (res) {
-                                          Toast.makeText(signup.this, "Successful Creating an Account!", Toast.LENGTH_LONG).show();
+                                          Toast.makeText(signup.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
                                       } else {
                                           Toast.makeText(signup.this, "Failure Creating User", Toast.LENGTH_LONG).show();
                                       }
@@ -93,11 +115,7 @@ public class signup extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
-
     //check password if has an uppercase,more than 8 characters
     public boolean checkPassword(String pass) {
         int c = 0;

@@ -2,6 +2,7 @@ package com.example.jason_valley.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jason_valley.R;
@@ -22,9 +24,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class signup extends AppCompatActivity {
-    EditText email, username, conPassword;
-    TextInputEditText password;
+
+    TextInputEditText password, email, username, conPassword;
     Button signup;
+    TextView signin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,15 @@ public class signup extends AppCompatActivity {
         password = findViewById(R.id.password);
         conPassword = findViewById(R.id.conPassword);
         signup = findViewById(R.id.signup);
+        signin = findViewById(R.id.signin);
 
-
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToSignIn = new Intent(getApplicationContext(),login.class);
+                startActivity(goToSignIn);
+            }
+        });
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,23 +68,26 @@ public class signup extends AppCompatActivity {
                     if (pass.equals(conPass)) {
                         DataBase db = new DataBase(signup.this);
                         Boolean doesExist = db.doesExist(e);
-                        Boolean check = checkPassword(pass);
-                        if(check){
-                            if (!doesExist) {
-                                try {
-                                    Toast.makeText(signup.this, userModel.toString(), Toast.LENGTH_LONG).show();
-                                    Boolean res = db.createUser(userModel);
-                                    if (res) {
-                                        Toast.makeText(signup.this, "Successful Creating User", Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(signup.this, "Failure Creating User", Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (Exception err) {
-                                    Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
-                                }
-                            } else
-                                Toast.makeText(signup.this, "User Already Exist! Use other Email Address!", Toast.LENGTH_LONG).show();
-                        }else Toast.makeText(signup.this, "Password should have al least 1 uppercase!", Toast.LENGTH_LONG).show();
+                      if(pass.length() < 8){
+                          Toast.makeText(signup.this, "Password is minimum of 8 characters", Toast.LENGTH_LONG).show();
+                      }else {
+                          Boolean check = checkPassword(pass);
+                          if(check){
+                              if (!doesExist) {
+                                  try {
+                                      Boolean res = db.createUser(userModel);
+                                      if (res) {
+                                          Toast.makeText(signup.this, "Successful Creating an Account!", Toast.LENGTH_LONG).show();
+                                      } else {
+                                          Toast.makeText(signup.this, "Failure Creating User", Toast.LENGTH_LONG).show();
+                                      }
+                                  } catch (Exception err) {
+                                      Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
+                                  }
+                              } else
+                                  Toast.makeText(signup.this, "User Already Exist! Use other Email Address!", Toast.LENGTH_LONG).show();
+                          }else Toast.makeText(signup.this, "Password should have at least 1 uppercase!", Toast.LENGTH_LONG).show();
+                      }
                     } else
                         Toast.makeText(signup.this, "Password Didn't Match!", Toast.LENGTH_SHORT).show();
                 }
@@ -93,5 +106,4 @@ public class signup extends AppCompatActivity {
         }
         return c > 0;
     }
-
 }

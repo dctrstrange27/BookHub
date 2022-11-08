@@ -9,30 +9,35 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.jason_valley.usermodel.userModel;
+
 public class DataBase extends SQLiteOpenHelper {
+    public static final String users = "users";
+
     public DataBase(Context context){
-        super(context, "Login.db",null,1);
+        super(context, "USERS.db",null,1);
     }
     @Override
     public void onCreate(SQLiteDatabase bookHub) {
-        bookHub.execSQL("create Table users(email text primary key,username text, password text)");
+        String createTableStatement = "CREATE TABLE "+users+"(id Integer primary key autoincrement,email Text,username Text,password Text)";
+        bookHub.execSQL(createTableStatement);
     }
     @Override
     public void onUpgrade(SQLiteDatabase bookHub, int i, int i1) {
-        bookHub.execSQL("drop Table if exists users");
+        bookHub.execSQL("drop Table if exists USERS");
     }
-
-    public Boolean createUser(String email,String username,String password){
+    // creating Users
+    public Boolean createUser(userModel userModel){
         SQLiteDatabase bookHub = this.getWritableDatabase();
         ContentValues cont =  new ContentValues();
-        cont.put("email",email);
-        cont.put("username",username);
-        cont.put("password",password);
-        long res = bookHub.insert("users",null,cont);
+        cont.put("email", userModel.getEmail() );
+        cont.put("username", userModel.getUsername());
+        cont.put("password", userModel.getPassword() );
+        long res = bookHub.insert(users,null,cont);
         return res != -1;
     }
+    //check of Users Does Exist
     public Boolean doesExist(String email){
-        System.out.println("ETO ang val : "+email);
         SQLiteDatabase bookHub = this.getWritableDatabase();
         Cursor cur = bookHub.rawQuery(String.format("select * from users where email= '%s'", email), null);
         return  cur.getCount() > 0;
@@ -40,7 +45,7 @@ public class DataBase extends SQLiteOpenHelper {
 
    public Boolean checkUser(String username, String password){
         SQLiteDatabase bookHub = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cur = bookHub.rawQuery("select * from users where username = ? and password = ?", new String[]{username,password});
+        Cursor cur = bookHub.rawQuery("select * from users where username = ? and password = ?", new String[]{username,password});
        return  cur.getCount() > 0;
    }
 }

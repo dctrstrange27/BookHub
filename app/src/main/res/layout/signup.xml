@@ -32,7 +32,7 @@
             android:id="@+id/username"
             android:layout_width="310dp"
             android:layout_height="42dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="8dp"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
             android:ems="10"
@@ -47,36 +47,19 @@
             android:id="@+id/email"
             android:layout_width="310dp"
             android:layout_height="42dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="email"
             android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintBottom_toTopOf="@+id/pass"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/password"
-            android:layout_width="310dp"
-            android:layout_height="43dp"
-            android:layout_marginBottom="11dp"
-            android:drawableLeft="@drawable/ic_baseline_password_24"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="password"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/conPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textPassword"
-            />
-
-        <EditText
             android:id="@+id/conPassword"
-            android:inputType="textPassword"
             android:layout_width="310dp"
             android:layout_height="43dp"
             android:layout_marginBottom="24dp"
@@ -84,6 +67,7 @@
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="confirm_password"
+            android:inputType="textPassword"
             android:textSize="12dp"
             app:layout_constraintBottom_toTopOf="@+id/signup"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +91,6 @@
             app:layout_constraintVertical_bias="0.425" />
 
         <TextView
-
             android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,6 +130,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/signup_pic" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass"
+            android:layout_width="310dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/conPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:passwordToggleEnabled="true"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="310dp"
+                android:layout_height="42dp"
+                android:backgroundTint="@color/trans"
+                android:drawableStart="@drawable/ic_baseline_password_24"
+                android:drawablePadding="5dp"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:textSize="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

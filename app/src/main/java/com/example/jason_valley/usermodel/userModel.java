@@ -5,7 +5,6 @@ public class userModel {
     private String email;
     private String username;
     private String password;
-
     //constructor
 
     public userModel(int id, String email, String username, String password) {

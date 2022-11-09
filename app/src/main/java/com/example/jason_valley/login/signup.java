@@ -38,17 +38,15 @@ public class signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.signup);
 
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        password = findViewById(R.id.passwd);
         conPassword = findViewById(R.id.conPassword);
         signup = findViewById(R.id.signup);
-        signin = findViewById(R.id.signin);
-
+        signin = findViewById(R.id.sign_in);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +66,7 @@ public class signup extends AppCompatActivity {
                 diag.dismiss();
             }
         });
-
+        diag.show();
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +94,7 @@ public class signup extends AppCompatActivity {
                                       Boolean res = db.createUser(userModel);
                                       TextView name = diag.findViewById(R.id.name);
                                       name.setText(user);
+                                      diag.show();
                                       Button btnOkay = diag.findViewById(R.id.okay);
                                       btnOkay.setOnClickListener(new View.OnClickListener() {
                                           @Override

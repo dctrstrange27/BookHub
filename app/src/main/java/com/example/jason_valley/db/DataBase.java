@@ -19,7 +19,7 @@ public class DataBase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase bookHub) {
-        String createTableStatement = "CREATE TABLE "+users+"(id Integer primary key autoincrement,email Text,username Text,password Text)";
+        String createTableStatement = "CREATE TABLE "+users+"(id Integer primary key autoincrement,email Text,username Text,password Text,download_books Integer, added_books Integer)";
         bookHub.execSQL(createTableStatement);
     }
     @Override

@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/mulish_semibold"
-                    android:text="New to BookRef?"
+                    android:text="New to BookHub?"
                     android:textColor="#423E3E"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"

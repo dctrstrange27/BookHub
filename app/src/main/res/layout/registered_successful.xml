@@ -2,15 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_box"
     android:orientation="vertical"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/trans"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_baseline_close_24" />
+    </RelativeLayout>
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_baseline_cloud_done_24"
         />
     <LinearLayout
@@ -19,6 +31,28 @@
         android:orientation="vertical"
         android:background="#fff"
       >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="WELCOME"
+            android:textSize="25sp"
+            android:textColor="#404145" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="rohan"
+            android:textColor="#404145"
+            android:textSize="25sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +66,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Continue Login To BookHub!"
+            android:text="Continue Login To BookHub"
             android:textColor="#000"
             android:textStyle="bold"
             android:layout_weight="1"
@@ -50,5 +84,7 @@
         android:text="Okay"
         app:cornerRadius="17dp"
         />
+
+
 
 </LinearLayout>

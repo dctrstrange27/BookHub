@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class signup extends AppCompatActivity {
         signup = findViewById(R.id.signup);
         signin = findViewById(R.id.signin);
 
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,9 +60,14 @@ public class signup extends AppCompatActivity {
         Dialog diag = new Dialog(this);
         diag.setContentView(R.layout.registered_successful);
         diag.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
-
+        diag.getWindow().getAttributes().windowAnimations=R.style.diagAnim;
+        ImageButton close = diag.findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                diag.dismiss();
+            }
+        });
 
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +94,8 @@ public class signup extends AppCompatActivity {
                               if (!doesExist) {
                                   try {
                                       Boolean res = db.createUser(userModel);
-                                      diag.show();
+                                      TextView name = diag.findViewById(R.id.name);
+                                      name.setText(user);
                                       Button btnOkay = diag.findViewById(R.id.okay);
                                       btnOkay.setOnClickListener(new View.OnClickListener() {
                                           @Override

@@ -27,13 +27,16 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class signup extends AppCompatActivity {
 
     TextInputEditText password, email, username, conPassword;
     Button signup;
     TextView signin;
-
+    EditText code;
+    String getCode = "";
+    Random rand = new Random();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,26 +50,15 @@ public class signup extends AppCompatActivity {
         conPassword = findViewById(R.id.conPassword);
         signup = findViewById(R.id.signup);
         signin = findViewById(R.id.sign_in);
-
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToSignIn = new Intent(getApplicationContext(),login.class);
                 startActivity(goToSignIn);
+                sendMail();
             }
         });
-        Dialog diag = new Dialog(this);
-        diag.setContentView(R.layout.registered_successful);
-        diag.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        diag.getWindow().getAttributes().windowAnimations=R.style.diagAnim;
-        ImageButton close = diag.findViewById(R.id.close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                diag.dismiss();
-            }
-        });
-        diag.show();
+
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,35 +79,17 @@ public class signup extends AppCompatActivity {
                       if(pass.length() < 8){
                           Toast.makeText(signup.this, "Password is minimum of 8 characters", Toast.LENGTH_LONG).show();
                       }else {
-                          Boolean check = checkPassword(pass);
-                          if(check){
-                              if (!doesExist) {
-                                  try {
-                                      Boolean res = db.createUser(userModel);
-                                      TextView name = diag.findViewById(R.id.name);
-                                      name.setText(user);
-                                      diag.show();
-                                      Button btnOkay = diag.findViewById(R.id.okay);
-                                      btnOkay.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
-                                              Toast.makeText(signup.this, "Welcome "+user+" Thankyou! for Signing up!", Toast.LENGTH_LONG).show();
-                                              diag.dismiss();
-                                              Intent goToHome = new Intent(getApplicationContext(), home.class);
-                                              startActivity(goToHome);
-                                          }
-                                      });
-                                      if (res) {
-                                          Toast.makeText(signup.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
-                                      } else {
-                                          Toast.makeText(signup.this, "Failure Creating User", Toast.LENGTH_LONG).show();
-                                      }
-                                  } catch (Exception err) {
-                                      Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
-                                  }
-                              } else
-                                  Toast.makeText(signup.this, "User Already Exist! Use other Email Address!", Toast.LENGTH_LONG).show();
-                          }else Toast.makeText(signup.this, "Password should have at least 1 uppercase!", Toast.LENGTH_LONG).show();
+                          try {
+                              int random =  rand.nextInt(10000);
+                              String code = Integer.toString(random);
+                              getCode = code;
+                              String subject = "VERIFICATION CODE";
+                              sendCode sendCode = new sendCode(signup.this,e,subject,code);
+                              sendCode.execute();
+                              verify();
+                          } catch (Exception err) {
+                              Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
+                          }
                       }
                     } else
                         Toast.makeText(signup.this, "Password Didn't Match!", Toast.LENGTH_SHORT).show();
@@ -123,6 +97,96 @@ public class signup extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+    /// Verification diag
+    public void verify(){
+        Dialog verify = new Dialog(signup.this);
+        verify.setContentView(R.layout.send_code);
+        verify.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        verify.getWindow().getAttributes().windowAnimations=R.style.diagAnim;
+        ImageButton closeV = (ImageButton) verify.findViewById(R.id.closeV);
+        Button ver  = (Button) verify.findViewById(R.id.verify);
+        code = (EditText) verify.findViewById(R.id.code);
+        // this will send to email
+        verify.show();
+        ver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    try {
+                        if(code.getText().toString().equals(getCode)){
+                            verify.dismiss();
+                            welcome();
+                        }else {
+                            Toast.makeText(signup.this, "Invalid Code!", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+            }
+        });
+        closeV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verify.dismiss();
+            }
+        });
+    }
+    private void sendMail(){
+        //sample data
+        String subject = "VERIFICATION CODE";
+        String mail = "dctrrohan@gmail.com";
+        String code = "12345";
+
+    }
+
+    //welcome dialog
+    public void welcome(){
+        Dialog diag = new Dialog(this);
+        diag.setContentView(R.layout.registered_successful);
+        diag.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        diag.getWindow().getAttributes().windowAnimations=R.style.diagAnim;
+
+        TextView name = (TextView) diag.findViewById(R.id.name);
+        String user = username.getText().toString();
+        name.setText(user);
+        ImageButton close = diag.findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                diag.dismiss();
+            }
+        });
+        diag.show();
+        Button btnOkay = diag.findViewById(R.id.okay);
+        btnOkay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(signup.this, "Welcome "+username.getText().toString()+"! for Signing up!", Toast.LENGTH_LONG).show();
+
+                diag.dismiss();
+                Intent goToHome = new Intent(getApplicationContext(), home.class);
+                startActivity(goToHome);
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     //check password if has an uppercase,more than 8 characters
     public boolean checkPassword(String pass) {
         int c = 0;

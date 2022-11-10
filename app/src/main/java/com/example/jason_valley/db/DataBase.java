@@ -7,8 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 import com.example.jason_valley.usermodel.userModel;
 
 public class DataBase extends SQLiteOpenHelper {
@@ -43,12 +41,25 @@ public class DataBase extends SQLiteOpenHelper {
         return  cur.getCount() > 0;
     }
 
-   public Boolean checkUser(String username, String password){
-        SQLiteDatabase bookHub = this.getWritableDatabase();
-        Cursor cur = bookHub.rawQuery("select * from users where username = ? and password = ?", new String[]{username,password});
-       return  cur.getCount() > 0;
+
+   public Cursor checkUser(String email){
+        SQLiteDatabase  db = this.getWritableDatabase();
+        String query = "SELECT * FROM users WHERE email='" +email+"'";
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
    }
+
+    public Cursor deleteUser(String email){
+        SQLiteDatabase  db = this.getWritableDatabase();
+        String query = "DELETE FROM users WHERE email='" +email+"'";
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+    }
+
+
 }
+
+
 
 
 

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -26,8 +27,11 @@ import com.example.jason_valley.usermodel.userModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.net.URI;
 import java.util.Objects;
 import java.util.Random;
+
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class signup extends AppCompatActivity {
 
@@ -49,15 +53,8 @@ public class signup extends AppCompatActivity {
         password = findViewById(R.id.passwd);
         conPassword = findViewById(R.id.conPassword);
         signup = findViewById(R.id.signup);
-        signin = findViewById(R.id.sign_in);
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToSignIn = new Intent(getApplicationContext(),login.class);
-                startActivity(goToSignIn);
-                sendMail();
-            }
-        });
+
+        gotToSignIn();
 
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
@@ -67,35 +64,48 @@ public class signup extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = Objects.requireNonNull(password.getText()).toString();
                 String conPass = conPassword.getText().toString();
-                userModel userModel;
-                userModel = new userModel(-1, e, user, pass);
+
                 if (user.equals("") || pass.equals("") || e.equals("") || conPass.equals("")) {
                     Toast.makeText(signup.this, "Missing payLoads! Please Fill all the Missing Fields", Toast.LENGTH_SHORT).show();
                     System.out.println("Error: Fill all Fields!!!");
                 } else {
                     if (pass.equals(conPass)) {
-                        DataBase db = new DataBase(signup.this);
-                        Boolean doesExist = db.doesExist(e);
                       if(pass.length() < 8){
                           Toast.makeText(signup.this, "Password is minimum of 8 characters", Toast.LENGTH_LONG).show();
                       }else {
-                          try {
-                              int random =  rand.nextInt(10000);
-                              String code = Integer.toString(random);
-                              getCode = code;
-                              String subject = "VERIFICATION CODE";
-                              sendCode sendCode = new sendCode(signup.this,e,subject,code);
-                              sendCode.execute();
-                              verify();
-                          } catch (Exception err) {
-                              Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
-                          }
+                          if(doesExist(e)){
+                              Toast.makeText(signup.this, "user Already Exist!!", Toast.LENGTH_LONG).show();
+                              return;
+                          }else  sendMail(e); verify();
+
                       }
                     } else
                         Toast.makeText(signup.this, "Password Didn't Match!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+    //verify user
+    public void verifyUser(){
+            try {
+            DataBase db = new DataBase(signup.this);
+            userModel userModel;
+            String hash = BCrypt.withDefaults().hashToString(12, password.getText().toString().toCharArray());
+            userModel = new userModel(-1, email.getText().toString(), username.getText().toString(), hash);
+            Boolean create = db.createUser(userModel);
+            if(create){
+                Toast.makeText(signup.this,"Successfully Registered!",Toast.LENGTH_SHORT).show();
+                welcome();
+            }else {
+                Toast.makeText(signup.this,"Failed creating an Account",Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception err) {
+            Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_LONG).show();
+        }
+    }
+    public Boolean doesExist(String eUser){
+        DataBase db = new DataBase(signup.this);
+        return db.doesExist(eUser);
     }
 
 
@@ -111,6 +121,19 @@ public class signup extends AppCompatActivity {
         ImageButton closeV = (ImageButton) verify.findViewById(R.id.closeV);
         Button ver  = (Button) verify.findViewById(R.id.verify);
         code = (EditText) verify.findViewById(R.id.code);
+        TextView emails = (TextView) verify.findViewById(R.id.clickEmail);
+
+        // will go to gmail.com
+        emails.setText(email.getText().toString());
+        emails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String google = "http://www.gmail.com";
+                Uri webAdd = Uri.parse(google);
+                Intent goToEmail = new Intent(Intent.ACTION_VIEW, webAdd);
+                startActivity(goToEmail);
+            }
+        });
         // this will send to email
         verify.show();
         ver.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +142,7 @@ public class signup extends AppCompatActivity {
                     try {
                         if(code.getText().toString().equals(getCode)){
                             verify.dismiss();
-                            welcome();
+                            verifyUser();
                         }else {
                             Toast.makeText(signup.this, "Invalid Code!", Toast.LENGTH_LONG).show();
                             return;
@@ -136,14 +159,14 @@ public class signup extends AppCompatActivity {
             }
         });
     }
-    private void sendMail(){
-        //sample data
+    private void sendMail(String e){
         String subject = "VERIFICATION CODE";
-        String mail = "dctrrohan@gmail.com";
-        String code = "12345";
-
+        int random =  rand.nextInt(10000);
+        String code = Integer.toString(random);
+        getCode = code;
+        sendCode sendCode = new sendCode(signup.this,e,subject,code);
+        sendCode.execute();
     }
-
     //welcome dialog
     public void welcome(){
         Dialog diag = new Dialog(this);
@@ -167,24 +190,23 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(signup.this, "Welcome "+username.getText().toString()+"! for Signing up!", Toast.LENGTH_LONG).show();
-
                 diag.dismiss();
                 Intent goToHome = new Intent(getApplicationContext(), home.class);
                 startActivity(goToHome);
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
+    // route to log in
+    public void gotToSignIn(){
+        signin = findViewById(R.id.sign_in);
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToSignIn = new Intent(getApplicationContext(),login.class);
+                startActivity(goToSignIn);
+            }
+        });
+    }
 
 
     //check password if has an uppercase,more than 8 characters

@@ -54,6 +54,19 @@
             android:text="We've send a code to your email account!"
             android:textSize="15sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/clickEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/mulish_semibold"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="#1459E4"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/code"
             android:layout_width="match_parent"

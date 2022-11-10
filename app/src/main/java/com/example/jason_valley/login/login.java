@@ -1,7 +1,9 @@
 package com.example.jason_valley.login;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -16,8 +18,10 @@ import com.example.jason_valley.db.DataBase;
 import com.example.jason_valley.home.home;
 import com.google.android.material.textfield.TextInputEditText;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class login extends AppCompatActivity {
-    TextInputEditText username, password;
+    TextInputEditText email, password;
     Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +41,47 @@ public class login extends AppCompatActivity {
             }
         });
 
-        username = (TextInputEditText) findViewById(R.id.userl);
+
+
+
+
+        email = (TextInputEditText) findViewById(R.id.userl);
         password = (TextInputEditText) findViewById(R.id.passl);
         login = (Button) findViewById(R.id.btnlogin);
 
         login.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString();
+                String e = email.getText().toString();
                 String pass = password.getText().toString();
                 DataBase db = new DataBase(login.this);
-
-                if(user.equals("") || pass.equals("")){
+                if(e.equals("") || pass.equals("")){
                     Toast.makeText(login.this, "Missing Payloads!", Toast.LENGTH_LONG).show();
                     return;
                 }else {
-                    Boolean checkUser = db.checkUser(user,pass);
-                    if(!checkUser){
-                        Toast.makeText(login.this, "wrong Credentials", Toast.LENGTH_LONG).show();
-                        return;
+                    Cursor res = db.checkUser(e);
+                    String passw = null;
+                    if(res.moveToNext()){passw = res.getString(3);}
+                    BCrypt.Result checkPass = BCrypt.verifyer().verify(pass.toCharArray(),passw);
+                    //Boolean checkUser = db.checkUser(e,pass);
+                    if(checkPass.verified){
+                        Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
+                        Intent goToHome = new Intent(getApplicationContext(), home.class);
+                        startActivity(goToHome);
+                    }else {
+                        Toast.makeText(login.this, "wrong credentials! Check email and password", Toast.LENGTH_LONG).show();
                     }
-                    Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
-                    Intent goToHome = new Intent(getApplicationContext(), home.class);
-                    startActivity(goToHome);
                 }
-
             }
         });
-
-
-
-
-
-
-
+    }
+    public  void deleteUser(){
+        DataBase db = new DataBase(login.this);
+        String user = "dcrrohan@gmail.com";
+        Cursor res = db.deleteUser(user);
+        if(res.moveToNext()){
+            System.out.println("deleted user: "+res.getString(1)+" "+res.getString(2)+" "+res.getString(3));
+        }
     }
 }

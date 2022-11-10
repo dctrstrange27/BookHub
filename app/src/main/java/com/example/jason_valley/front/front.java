@@ -10,6 +10,8 @@ import android.widget.Button;
 import com.example.jason_valley.R;
 import com.example.jason_valley.login.login;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class front extends AppCompatActivity {
 
     @Override
@@ -27,6 +29,9 @@ public class front extends AppCompatActivity {
         Button signup = (Button) findViewById(R.id.signup);
         Intent goToLogin = new Intent(this, com.example.jason_valley.login.login.class);
         Intent goToSignup = new Intent(this, com.example.jason_valley.login.signup.class);
+
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +40,7 @@ public class front extends AppCompatActivity {
         });
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {    startActivity(goToSignup);}
+            public void onClick(View view) {   startActivity(goToSignup);}
         });
 
     }

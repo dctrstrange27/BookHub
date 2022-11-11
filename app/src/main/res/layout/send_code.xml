@@ -20,6 +20,8 @@
             app:srcCompat="@drawable/ic_baseline_close_24" />
     </RelativeLayout>
     <ImageView
+        android:layout_marginTop="-15dp"
+        android:paddingBottom="10dp"
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -68,6 +70,7 @@
             android:clickable="true"
             android:textStyle="bold" />
         <EditText
+            android:padding="10dp"
             android:id="@+id/code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,6 +81,29 @@
             android:textSize="15sp"
             >
         </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@color/trans"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:paddingStart="10dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="10dp"
+            android:drawableStart="@drawable/warning"
+            android:drawablePadding="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Didn't received a code? Check email if Existing"
+            android:textSize="14sp"
+            android:textColor="#201E1E"
+            android:layout_marginRight="2dp"
+            android:fontFamily="@font/mulish_semibold"
+            />
     </LinearLayout>
     <Button
         android:layout_marginTop="10dp"

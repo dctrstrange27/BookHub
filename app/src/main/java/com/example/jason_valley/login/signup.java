@@ -8,12 +8,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,16 +21,13 @@ import com.example.jason_valley.db.DataBase;
 import com.example.jason_valley.home.home;
 import com.example.jason_valley.usermodel.userModel;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.net.URI;
 import java.util.Objects;
 import java.util.Random;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class signup extends AppCompatActivity {
-
     TextInputEditText password, email, username, conPassword;
     Button signup;
     TextView signin;
@@ -53,8 +46,9 @@ public class signup extends AppCompatActivity {
         password = findViewById(R.id.passwd);
         conPassword = findViewById(R.id.conPassword);
         signup = findViewById(R.id.signup);
-
         gotToSignIn();
+
+
 
         //Signup
         signup.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +71,6 @@ public class signup extends AppCompatActivity {
                               Toast.makeText(signup.this, "user Already Exist!!", Toast.LENGTH_LONG).show();
                               return;
                           }else  sendMail(e); verify();
-
                       }
                     } else
                         Toast.makeText(signup.this, "Password Didn't Match!", Toast.LENGTH_SHORT).show();
@@ -107,9 +100,6 @@ public class signup extends AppCompatActivity {
         DataBase db = new DataBase(signup.this);
         return db.doesExist(eUser);
     }
-
-
-
 
 
     /// Verification diag
@@ -189,7 +179,7 @@ public class signup extends AppCompatActivity {
         btnOkay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(signup.this, "Welcome "+username.getText().toString()+"! for Signing up!", Toast.LENGTH_LONG).show();
+                Toast.makeText(signup.this, "Welcome "+username.getText().toString()+"! Thank you for Signing up!", Toast.LENGTH_LONG).show();
                 diag.dismiss();
                 Intent goToHome = new Intent(getApplicationContext(), home.class);
                 startActivity(goToHome);
@@ -207,7 +197,6 @@ public class signup extends AppCompatActivity {
             }
         });
     }
-
 
     //check password if has an uppercase,more than 8 characters
     public boolean checkPassword(String pass) {

@@ -48,7 +48,7 @@
                 android:layout_marginLeft="-15dp"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/ic_baseline_person_24"
-                android:hint="username" />
+                android:hint="email" />
         </com.google.android.material.textfield.TextInputLayout>
     </RelativeLayout>
 
@@ -108,7 +108,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New to Bookhub?"
+            android:fontFamily="@font/mulish_semibold"
+            android:text="New to Bookhub? "
             android:textSize="13sp"
             android:textColor="#000"
             android:layout_marginRight="2dp"
@@ -117,10 +118,10 @@
             android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mulish_semibold"
             android:text="Sign up"
             android:textSize="13sp"
-            android:textColor="#0E8DC6"
-
+            android:textColor="#0E70C6"
             />
     </LinearLayout>
 

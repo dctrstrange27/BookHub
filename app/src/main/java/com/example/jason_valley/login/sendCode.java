@@ -1,10 +1,15 @@
 package com.example.jason_valley.login;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.jason_valley.R;
 import com.example.jason_valley.login.Utils;
 
 import java.util.Properties;
@@ -31,27 +36,34 @@ public class sendCode extends AsyncTask<Void,Void,Void>  {
     private String mEmail;
     private String mSubject;
     private String mMessage;
+    private boolean send = false;
+
     private ProgressDialog mProgressDialog;
+
+
     //Constructor
     public sendCode(Context mContext, String mEmail, String mSubject, String mMessage) {
         this.mContext = mContext;
         this.mEmail = mEmail;
         this.mSubject = mSubject;
         this.mMessage = mMessage;
+
     }
+    @SuppressLint("ResourceType")
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //Show progress dialog while sending email
-        mProgressDialog = ProgressDialog.show(mContext,"Sending message", "Please wait...",false,false);
+        mProgressDialog = ProgressDialog.show(mContext,null,null,false);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mProgressDialog.getWindow().getAttributes().windowAnimations=R.style.diagAnim;
+        mProgressDialog.setContentView(R.layout.loading_dialog);
     }
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         //Dismiss progress dialog when message successfully send
         mProgressDialog.dismiss();
-        //Show success toast
-        Toast.makeText(mContext,"Message Sent",Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext,"Code Sent",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -92,5 +104,17 @@ public class sendCode extends AsyncTask<Void,Void,Void>  {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean isSend() {
+        return send;
+    }
+
+    public void setSend(boolean send) {
+        this.send = send;
+    }
+
+    public Context getmContext() {
+        return mContext;
     }
 }

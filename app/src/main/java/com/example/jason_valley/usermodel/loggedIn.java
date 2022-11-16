@@ -1,7 +1,6 @@
 package com.example.jason_valley.usermodel;
 
 public class loggedIn {
-
     private int id;
     private String email;
     private String username;

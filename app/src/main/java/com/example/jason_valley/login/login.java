@@ -41,7 +41,6 @@ public class login extends AppCompatActivity {
         email = findViewById(R.id.userl);
         password = findViewById(R.id.passl);
         login = findViewById(R.id.btnlogin);
-
         login.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")
             @Override
@@ -49,10 +48,8 @@ public class login extends AppCompatActivity {
                 String e = email.getText().toString();
                 String pass = password.getText().toString();
                 DataBase db = new DataBase(login.this);
-
                 Intent goToHome = new Intent(getApplicationContext(), mainHome.class);
                 startActivity(goToHome);
-
                 if (e.equals("") || pass.equals("")) {
                     Toast.makeText(login.this, "Missing Payloads!", Toast.LENGTH_LONG).show();
                     return;

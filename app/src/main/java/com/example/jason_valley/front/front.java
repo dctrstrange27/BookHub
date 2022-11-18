@@ -19,14 +19,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.jason_valley.R;
-import com.example.jason_valley.databinding.ActivityMainBinding;
+
 import com.example.jason_valley.db.DataBase;
+import com.example.jason_valley.homeFragment.books;
 import com.example.jason_valley.login.dialog;
 import com.example.jason_valley.login.signup;
 import com.example.jason_valley.usermodel.Books;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 public class front extends AppCompatActivity {
 
@@ -34,49 +36,91 @@ public class front extends AppCompatActivity {
     ImageView picture;
     Button add;
     Bitmap bitmap;
+    DataBase b = new DataBase(front.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.front);
-
        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-//
-//        title = findViewById(R.id.title);
-//        author = findViewById(R.id.author);
-//        description = findViewById(R.id.desc);
-//        language = findViewById(R.id.lang);
-//        category = findViewById(R.id.cat);
+
 //        add = findViewById(R.id.add);
-//        category = findViewById(R.id.cat);
-            openLogin();
+          Boolean c =  b.checkBooks("Cleopatra");
+          if(!c) addAdvetureBook();
+          openLogin();
+//        add = findViewById(R.id.login);
 //        add.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //
-//
+//              Toast.makeText(front.this,"Books Already Exist",Toast.LENGTH_SHORT).show();
 //            }
 //        });
     }
     //creating books
-//   public void createBooks(){
-//        String tit = title.getText().toString();
+   public void addAdvetureBook(){
+
 //       String aut = author.getText().toString();
 //       String desc = description.getText().toString();
 //       String lang = language.getText().toString();
-//       String cat = category.getText().toString();
-//
-//       String path = "storage/self/primary/DCIM/Camera/"+tit+".jpg";
-//       DataBase b = new DataBase(front.this);
-//       Bitmap bitmap = BitmapFactory.decodeFile(path);
-//       ByteArrayOutputStream byt = new ByteArrayOutputStream();
-//       bitmap.compress(Bitmap.CompressFormat.PNG,0, byt);
-//       byte[] img = byt.toByteArray();
-//       Books book = new Books(-1,tit,aut,desc,null,lang,cat);
-//       Boolean ins = b.createBooks(book,img);
-//
-//       if(ins) Toast.makeText(this, "Book Added", Toast.LENGTH_SHORT).show();
-//       else Toast.makeText(this, "Failed to AddBook", Toast.LENGTH_SHORT).show();
-//   }
+//       String cat = category.getText().toString();s
+
+
+       //Adventure
+       Books across_asia_on_a_bicycle = new Books(
+               -1,"Across Asia on a Bicycle",
+               "TThomas Gaskell Allen and William Lewis Sachtleben",
+               "A fast moving narrative, interesting and full of twists of fate. Two young men take on the world in bygone times, when nations allowed such things. Riders of today will wonder at the challenge - but the same lure that drives cross-country cycling today is certainly in these pages.",
+               "english",
+               "adventure");
+       Books journey = new Books(
+               -1,"A Journey to the Centre of the Earth",
+               "Jules Verne",
+               "Journey to the Center of the Earth is a classic 1864 science fiction novel by Jules Verne. The story involves German professor Otto Lidenbrock who believes there are volcanic tubes going toward the centre of the Earth.",
+               "english",
+               "adventure");
+       Books cleopatra= new Books(
+               -1,
+               "Cleopatra",
+               " Miranda Kate ",
+               "Cleopatra mixes historical action with supernatural events, and could be described as a historical fantasy novel",
+               "english",
+               "adventure");
+       Books king_of_solomon = new Books(
+               -1,
+               "King Solomon's Mines",
+               "H. Rider Haggard",
+               "It tells of a search of an unexplored region of Africa by a group of adventurers led by Allan Quatermain for the missing brother of one of the party.",
+               "english",
+               "adventure");
+       Books tarzan = new Books(
+               -1,
+               "Tarzan of the Apes",
+               "Edgar Rice Burroughs",
+               "This is the story of the ape-man Tarzan, raised in the wild by the great ape Kala, and how he learns the secrets of the jungle to survive—how to talk with the animals, swing through the trees, and fight the great predators.",
+               "english",
+               "adventure");
+
+       Boolean i1 = b.createBooks(across_asia_on_a_bicycle);
+       Boolean i2 = b.createBooks(journey);
+       Boolean i3 = b.createBooks(cleopatra);
+       Boolean i4 = b.createBooks(king_of_solomon);
+       Boolean i5 = b.createBooks(tarzan);
+
+
+
+
+
+
+
+
+
+
+
+
+       if(i1 && i2 && i3 && i4 && i5)Toast.makeText(this, "Books Added", Toast.LENGTH_SHORT).show();
+       Toast.makeText(this, "Failed to AddBook", Toast.LENGTH_SHORT).show();
+   }
 
     public void openLogin(){
         Button login =  findViewById(R.id.login);

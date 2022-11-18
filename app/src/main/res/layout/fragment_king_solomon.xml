@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".homeFragment.Home">
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/kingPdf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.github.barteksc.pdfviewer.PDFView>
+    <ScrollView
+        android:id="@+id/kingDes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:fillViewport="true"
+        android:nestedScrollingEnabled="false"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:src="@drawable/king_jolomon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pacifico"
+                android:padding="5dp"
+                android:text="King Solomon Mines"
+                android:textAlignment="center"
+                android:textColor="#5C5A5A"
+                android:textSize="25sp" />
+            <!--            Description-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text="Description:"
+                    android:textAlignment="textStart"
+                    android:textColor="#5C5A5A"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="20dp"
+                    android:text="It tells of a search of an unexplored region of Africa by a group of adventurers led by Allan Quatermain for the missing brother of one of the party."
+                    android:textAlignment="textStart"
+                    android:textColor="#323030"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text="Author:"
+                    android:textAlignment="textStart"
+                    android:textColor="#5C5A5A"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text=" Rider H. Haggard"
+                    android:textAlignment="textStart"
+                    android:textColor="#323030"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text="language:"
+                    android:textAlignment="textStart"
+                    android:textColor="#5C5A5A"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text=" English"
+                    android:textAlignment="textStart"
+                    android:textColor="#323030"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text="Genre"
+                    android:textAlignment="textStart"
+                    android:textColor="#5C5A5A"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:lineSpacingExtra="5sp"
+                    android:padding="10dp"
+                    android:text=" Adventure"
+                    android:textAlignment="textStart"
+                    android:textColor="#323030"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"></LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/read"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#9E2F2E40"
+        android:fontFamily="@font/mulish_semibold"
+        android:text="read"
+        app:cornerRadius="30dp"
+        android:layout_marginTop="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/kingPdf" />
+</androidx.constraintlayout.widget.ConstraintLayout>

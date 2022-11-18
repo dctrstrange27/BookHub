@@ -135,6 +135,7 @@ public class signup extends AppCompatActivity {
         TextView c =  verify.findViewById(R.id.countdown);
         TextView exp = verify.findViewById(R.id.expired);
         TextView resend = verify.findViewById(R.id.resend);
+
         CountDownTimer start = new CountDownTimer(300000, 1000) {
             @SuppressLint("SetTextI18n")
             @Override
@@ -160,6 +161,7 @@ public class signup extends AppCompatActivity {
             public void onClick(View view) {
                 // call verify again
                 if(sendAgain){
+                    sendMail(e);
                     start.start();
                     verify();
                 }else {

@@ -5,16 +5,15 @@ public class Books {
     private String title;
     private String author;
     private String description;
-    private Byte[] picture;
     private String language;
     private String category;
 
-    public Books(int id, String title, String author, String description, Byte[] picture, String language, String category) {
+    public Books(int id, String title, String author, String description, String language, String category) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
-        this.picture = picture;
+
         this.language = language;
         this.category = category;
     }
@@ -49,14 +48,6 @@ public class Books {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Byte[] picture) {
-        this.picture = picture;
     }
 
     public String getLanguage() {

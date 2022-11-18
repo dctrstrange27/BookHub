@@ -9,18 +9,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.jason_valley.usermodel.loggedIn;
 import com.example.jason_valley.usermodel.Books;
 
+import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBase extends SQLiteOpenHelper {
     public static final String users = "users";
     public static final String email = "email";
     public static final String books = "books";
 
     public DataBase(Context context){
-        super(context, "BOOKHUB.db",null,3);
+        super(context, "BOOKHUBS.db",null,4);
     }
     @Override
     public void onCreate(SQLiteDatabase bookHub) {
         String userLog =  "CREATE TABLE "+users+" (id Integer primary key autoincrement, email Text, username Text, password Text, picture Blob, verified Bool, viewBooks Integer, borrowBooks Integer)";
-        String bookQuery = "CREATE TABLE "+books+" (id Integer primary key autoincrement, title Text, author Text, description Text, picture Blob, language Text, category Text)";
+        String bookQuery = "CREATE TABLE "+books+" (id Integer primary key autoincrement, title Text, author Text, description Text, language Text, category Text)";
         bookHub.execSQL(userLog);
         bookHub.execSQL(bookQuery);
 
@@ -69,21 +73,27 @@ public class DataBase extends SQLiteOpenHelper {
         return res != -1;
     }
 
-//    public List<Books> getUserDetails(String email){
-//        List<Books> fetch = new ArrayList<>();
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String querL = "SELECT * FROM users WHERE email='" +email+"'";
-//        Cursor res = db.rawQuery(querL,null);
-//        if(res.moveToNext()){
-//            int id = res.getInt(0);
-//            String e = res.getString(1);
-//            String username = res.getString(2);
-//            String pass = res.getString(3);
-//            Books newUser = new Books(id,e,username,pass);
-//            fetch.add(newUser);
-//        }
-//       return fetch;
-//    }
+    public List<Books> getAllBooks(){
+        List<Books> fetch = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String querL = "SELECT * FROM " + books;
+        Cursor res = db.rawQuery(querL,null);
+        if(res.moveToFirst()){
+            do {
+                int _id = res.getInt(0);
+                String tit = res.getString(1);
+                String author = res.getString(2);
+                String des = res.getString(3);
+                String lang = res.getString(4);
+                String cat = res.getString(5);
+                Books newBook = new Books(_id,tit,author,des,lang,cat);
+                fetch.add(newBook);
+            }while (res.moveToNext());
+        }
+        res.close();
+        db.close();
+       return fetch;
+    }
     public Boolean checkNewUser(String email){
         SQLiteDatabase  db = this.getWritableDatabase();
         String query = "SELECT * FROM "+users+" WHERE email='" +email+"'";
@@ -102,17 +112,29 @@ public class DataBase extends SQLiteOpenHelper {
         bookHub.delete(users, null, null);
     }
 
-    public Boolean createBooks(Books b, byte[] img){
+    public Boolean createBooks(Books b){
         SQLiteDatabase bookHub = this.getWritableDatabase();
         ContentValues cont =  new ContentValues();
         cont.put("title", b.getTitle());
-        cont.put("author", b.getTitle() );
-        cont.put("description", b.getTitle() );
-        cont.put("picture", img);
+        cont.put("author", b.getAuthor() );
+        cont.put("description", b.getDescription() );
         cont.put("language", b.getLanguage());
         cont.put("category", b.getCategory());
         long res = bookHub.insert(books,null,cont);
         return res != -1;
+    }
+
+    public Boolean checkBooks(String title){
+        SQLiteDatabase  db = this.getWritableDatabase();
+        String query = "SELECT * FROM "+books+" WHERE title='" +title+"'";
+        Cursor cursor = db.rawQuery(query,null);
+        return  cursor.getCount() > 0;
+    }
+
+
+    public void deleteBooks(){
+        SQLiteDatabase bookHub = this.getWritableDatabase();
+        bookHub.delete(books, null, null);
     }
 
 }

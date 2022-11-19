@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEFF1"
     tools:context=".homeFragment.books">
 
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/frag"-->
-<!--        />-->
-
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frag"
+        />
     <ScrollView
-        android:id="@+id/home"
+        android:id="@+id/books"
         android:nestedScrollingEnabled="false"
         android:fillViewport="true"
         android:background="@drawable/background"
@@ -48,6 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:paddingTop="9dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -56,17 +59,79 @@
                     android:padding="5dp"
                     android:text="Adventure"
                     android:textAlignment="center"
-                    android:textColor="#5C5A5A"
-                    android:textSize="18sp" />
+                    android:textColor="#ECE5E5"
+                    android:background="@drawable/cat_box"
+                    android:textSize="15sp" />
             </LinearLayout>
             <HorizontalScrollView
+                android:id="@+id/hori"
                 android:layout_width="match_parent"
                 android:scrollbars="vertical"
-                android:layout_height="300dp">
+                android:layout_height="250dp">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cleo"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Cleopatra"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/cleopatra"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tarzan"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E4E2E2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text=" Tarzan of the Apes"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/tarzan"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:layout_width="180dp"
                         android:layout_height="230dp"
@@ -75,7 +140,6 @@
                         android:id="@+id/king"
                         app:cardElevation="10dp">
                         <LinearLayout
-
                             android:layout_width="match_parent"
                             android:layout_height="230dp"
                             android:gravity="center_horizontal"
@@ -101,6 +165,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/journey"
                         android:layout_width="180dp"
                         android:layout_height="230dp"
                         android:layout_margin="10dp"
@@ -116,7 +181,160 @@
                                 android:textAlignment="center"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:padding="5dp"
-                                android:textColor="#3E3C3C"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text=" A Journey to the Centre of the Earth"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/journey"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/across"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Across Asia on a Bicycle"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/across"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:paddingTop="9dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:padding="5dp"
+                    android:text="Horror"
+                    android:textAlignment="center"
+                    android:textColor="#ECE5E5"
+                    android:background="@drawable/horror_box"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <HorizontalScrollView
+                android:id="@+id/hori2"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_height="250dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/beach"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Beach Town Apocalypse"
+                                android:textSize="12sp" />
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/beach_town"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/color"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E4E2E2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Color Out of Space"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/color"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/mostly"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -130,6 +348,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/invi"
                         android:layout_width="180dp"
                         android:layout_height="230dp"
                         android:layout_margin="10dp"
@@ -146,6 +365,129 @@
                                 android:fontFamily="@font/mulish_semibold"
                                 android:padding="5dp"
                                 android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="The Invisible Man"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/invi"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/raven"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="The Raven The Masque of the Red Death The Cask of Amontillado "
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/the_raven"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:paddingTop="9dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:padding="5dp"
+                    android:text="Fiction"
+                    android:textAlignment="center"
+                    android:textColor="#ECE5E5"
+                    android:background="@drawable/fiction_box"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <HorizontalScrollView
+                android:id="@+id/hori3"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_height="250dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/alice"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Alice's Adventures in Wonderland"
+                                android:textSize="12sp" />
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/alice_adventure"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/dracu"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E4E2E2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -159,6 +501,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/fly"
                         android:layout_width="180dp"
                         android:layout_height="230dp"
                         android:layout_margin="10dp"
@@ -178,16 +521,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text=" Beach Town"
+                                android:text="Fly Away Home"
                                 android:textSize="12sp" />
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/beach_town"
+                                android:src="@drawable/fly_away"
                                 />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/les"
                         android:layout_width="180dp"
                         android:layout_height="230dp"
                         android:layout_margin="10dp"
@@ -207,16 +551,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text=" Across Asia on a Bicycle"
+                                android:text="Les Misérables"
                                 android:textSize="12sp" />
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/across"
+                                android:src="@drawable/les_miserable"
                                 />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/sher"
                         android:layout_width="180dp"
                         android:layout_height="230dp"
                         android:layout_margin="10dp"
@@ -236,12 +581,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="Computer Jargon"
+                                android:text="The Adventures of Sherlock Holmes"
                                 android:textSize="12sp" />
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/computer_jargon"
+                                android:src="@drawable/sherlocks"
                                 />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -249,7 +594,187 @@
 
                 </LinearLayout>
             </HorizontalScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:paddingTop="9dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_extrabold"
+                    android:padding="5dp"
+                    android:text="Computer"
+                    android:textAlignment="center"
+                    android:textColor="#ECE5E5"
+                    android:background="@drawable/fiction_box"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <HorizontalScrollView
+                android:id="@+id/hori4"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_height="250dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/crack"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Hacker Crackdown"
+                                android:textSize="12sp" />
+                            <ImageView
 
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/crackdown"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/hacker"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E4E2E2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Hackers Heroes of the Computer Revolution"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/hackers"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/economy"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="On the Economy of Machinery and Manufactures"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/economy"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/coming"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="The Coming Technological Singularity"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/coming"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/jargon"
+                        android:layout_width="180dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:gravity="center_horizontal"
+                            android:background="#26252E"
+                            android:orientation="vertical">
+                            <TextView
+                                android:textAlignment="center"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:padding="5dp"
+                                android:textColor="#E8E4E4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="The Hacker's Dictionary"
+                                android:textSize="12sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/jargon"
+                                />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp">

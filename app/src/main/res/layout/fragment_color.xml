@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
     </com.github.barteksc.pdfviewer.PDFView>
     <ScrollView
-        android:id="@+id/dracu"
+        android:id="@+id/color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background"
@@ -22,8 +22,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +33,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
-                android:src="@drawable/dracula" />
+                android:src="@drawable/color" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +41,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/pacifico"
                 android:padding="5dp"
-                android:text="Dracula"
+                android:text="Color Out of Space"
                 android:textAlignment="center"
                 android:textColor="#5C5A5A"
                 android:textSize="25sp" />
@@ -70,7 +68,7 @@
                     android:fontFamily="@font/poppins"
                     android:lineSpacingExtra="5sp"
                     android:padding="20dp"
-                   android:text="His face was a strong, a very strong, aquiline, with high bridge of the thin nose and peculiarly arched nostrils, with lofty domed forehead, and hair growing scantily round the temples but profusely elsewhere."
+                    android:text="In the tale, an unnamed narrator pieces together the story of an area known by the locals as the blasted heath in the hills west of the fictional town of Arkham, Massachusetts."
                     android:textAlignment="textStart"
                     android:textColor="#323030"
                     android:textSize="15sp" />
@@ -96,7 +94,7 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:lineSpacingExtra="5sp"
                     android:padding="10dp"
-                    android:text=" Bram Stoker"
+                    android:text="H.P. Lovecraft"
                     android:textAlignment="textStart"
                     android:textColor="#323030"
                     android:textSize="15sp" />
@@ -148,7 +146,7 @@
                     android:fontFamily="@font/muli_extrabold"
                     android:lineSpacingExtra="5sp"
                     android:padding="10dp"
-                    android:text="Fiction"
+                    android:text="Horror"
                     android:textAlignment="textStart"
                     android:textColor="#323030"
                     android:textSize="15sp" />

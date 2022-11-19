@@ -155,20 +155,23 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/read"
+                    android:layout_width="280dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="#2F2E41"
+                    android:fontFamily="@font/mulish_semibold"
+                    android:text="read"
+                    app:cornerRadius="30dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/read"
-        android:layout_width="280dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="600dp"
-        android:backgroundTint="#9E2F2E40"
-        android:fontFamily="@font/mulish_semibold"
-        android:text="read"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

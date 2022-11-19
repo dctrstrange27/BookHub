@@ -45,14 +45,9 @@ public class Home extends Fragment {
     CardView alice;
     CardView fly;
 
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
          View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //most papular button
@@ -71,11 +66,7 @@ public class Home extends Fragment {
         alice = view.findViewById(R.id.alice);
         fly = view.findViewById(R.id.fly);
 
-
         home = view.findViewById(R.id.home);
-
-
-
 
          //most popular
          king.setOnClickListener(new View.OnClickListener() {

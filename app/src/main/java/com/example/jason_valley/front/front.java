@@ -52,20 +52,16 @@ public class front extends AppCompatActivity {
 //        add.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//
 //              Toast.makeText(front.this,"Books Already Exist",Toast.LENGTH_SHORT).show();
 //            }
 //        });
     }
     //creating books
    public void addAdvetureBook(){
-
 //       String aut = author.getText().toString();
 //       String desc = description.getText().toString();
 //       String lang = language.getText().toString();
-//       String cat = category.getText().toString();s
-
-
+//       String cat = category.getText().toString();
        //Adventure
        Books across_asia_on_a_bicycle = new Books(
                -1,"Across Asia on a Bicycle",

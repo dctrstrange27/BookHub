@@ -50,8 +50,7 @@ public class login extends AppCompatActivity {
                 String e = email.getText().toString();
                 String pass = password.getText().toString();
                 DataBase db = new DataBase(login.this);
-                Intent goToHome = new Intent(getApplicationContext(), mainHome.class);
-                startActivity(goToHome);
+
                 if (e.equals("") || pass.equals("")) {
                     Toast.makeText(login.this, "Missing Payloads!", Toast.LENGTH_LONG).show();
                     return;
@@ -65,7 +64,8 @@ public class login extends AppCompatActivity {
                         BCrypt.Result checkPass = BCrypt.verifyer().verify(pass.toCharArray(), passw);
                         if (checkPass.verified) {
                             Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
-
+                            Intent goToHome = new Intent(getApplicationContext(), mainHome.class);
+                            startActivity(goToHome);
                             check = 1;
                         } else {
                             Toast.makeText(login.this, "wrong credentials! Check email and password", Toast.LENGTH_LONG).show();

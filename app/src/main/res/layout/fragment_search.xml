@@ -1,68 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".homeFragment.Search"
-    android:gravity="center"
-    android:background="#F6F9FB"
-    >
-    <LinearLayout
+    android:orientation="vertical">
+    <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:background="#F7FFFFFF"
-            android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:id="@+id/searchFrag" />
+
+        <LinearLayout
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
             <LinearLayout
+                android:layout_marginTop="60dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                android:layout_height="wrap_content">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    tools:ignore="PrivateResource" />
+                    android:fontFamily="@font/pacifico"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="Seach Books"
+                    android:textColor="#2B2A2A"
+                    android:textSize="17dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:ignore="UselessParent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:text="all_books"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="view all"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            tools:ignore="RelativeOverlap" />
-                    </RelativeLayout>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/my_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    </androidx.recyclerview.widget.RecyclerView>
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="40dp"
+                    >
+                    <androidx.appcompat.widget.SearchView
+                        android:background="@drawable/cat_box"
+                        android:paddingHorizontal="1dp"
+                        android:id="@+id/search"
+                        app:theme="@style/AppSeachView"
+                        app:queryHint="seach title,Author,genre..."
+                        app:iconifiedByDefault="false"
+                        android:layout_width="260dp"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        app:queryBackground="@android:color/transparent"
+                        />
+                    <Button
+                        android:gravity="center"
+                        android:id="@+id/show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="43dp"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/search"
+                        android:background="@drawable/cat_box"
+                        app:cornerRadius="20dp"
+                        />
                 </LinearLayout>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:background="#F7FFFFFF"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp"
+                        android:orientation="vertical">
+                        <ListView
+                            android:id="@+id/book_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="500dp"
+                            tools:listitem="@layout/list_book"
+                            />
+                    </LinearLayout>
+
+                </ScrollView>
             </LinearLayout>
-        </ScrollView>
         </LinearLayout>
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout >

@@ -27,7 +27,7 @@ public class comp extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("The-Hacker's-Dictionary.pdf").load();
+                showPdf.fromAsset("hackers.pdf").load();
                 comp.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

@@ -29,7 +29,6 @@ import com.github.barteksc.pdfviewer.PDFView;
 
 public class Home extends Fragment {
     ScrollView home;
-
   //most popular
     CardView king;
     CardView mostly;
@@ -65,49 +64,47 @@ public class Home extends Fragment {
         hacker= view.findViewById(R.id.hacker);
         alice = view.findViewById(R.id.alice);
         fly = view.findViewById(R.id.fly);
-
         home = view.findViewById(R.id.home);
-
          //most popular
          king.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, king_solomon.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, king_solomon.class, null).commit();
                 home.setVisibility(View.GONE);
              }
          });
         mostly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, mostly.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, mostly.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         dracu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, dracula.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, dracula.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         beach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, beach.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, beach.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         across.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.most_popular.across.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.most_popular.across.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         comp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.most_popular.comp.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.most_popular.comp.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
@@ -116,42 +113,42 @@ public class Home extends Fragment {
         coming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.coming.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.coming.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         tarzan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.tarzan.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.tarzan.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         cleo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.cleo.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.cleo.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         hacker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.hacker.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.hacker.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         alice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.alice.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.alice.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });
         fly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.fly.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.homeFrag, com.example.jason_valley.recommended.fly.class, null).commit();
                 home.setVisibility(View.GONE);
             }
         });

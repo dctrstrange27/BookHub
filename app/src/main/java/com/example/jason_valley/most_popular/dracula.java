@@ -29,7 +29,7 @@ public class dracula extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Dracula.pdf").load();
+                showPdf.fromAsset("dracula.pdf").load();
                 dracu.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

@@ -28,7 +28,7 @@ public class mostly extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Mostly-Dark.pdf").load();
+                showPdf.fromAsset("mostly.pdf").load();
                 mostly.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

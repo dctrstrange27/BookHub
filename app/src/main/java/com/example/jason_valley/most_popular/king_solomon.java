@@ -26,7 +26,7 @@ public class king_solomon extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("King-Solomon's-Mines-.pdf").load();
+                showPdf.fromAsset("solomon.pdf").load();
                 kingdes.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

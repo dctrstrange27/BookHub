@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.example.jason_valley.R;
-import com.example.jason_valley.most_popular.across;
 import com.github.barteksc.pdfviewer.PDFView;
 
 public class hacker extends Fragment {
@@ -30,7 +29,7 @@ public class hacker extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Hackers-Heroes-of-the-Computer-Revolution.pdf").load();
+                showPdf.fromAsset("heroes.pdf").load();
                 hacker.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

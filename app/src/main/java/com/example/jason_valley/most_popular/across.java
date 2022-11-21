@@ -29,7 +29,7 @@ public class across extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Across-Asia-on-a-Bicycle.pdf").load();
+                showPdf.fromAsset("across.pdf").load();
                 across.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

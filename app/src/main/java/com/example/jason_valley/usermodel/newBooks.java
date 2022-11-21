@@ -1,16 +1,15 @@
 package com.example.jason_valley.usermodel;
 
-public class Books {
+public class newBooks {
     private int id;
     private String title;
     private String author;
     private String description;
     private String language;
     private String category;
-    private  String images;
-    private  String pdf;
+    private int images;
 
-    public Books(int id, String title, String author, String description, String language, String category, String images, String pdf) {
+    public newBooks(int id, String title, String author, String description, String language, String category, int images) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -18,21 +17,6 @@ public class Books {
         this.language = language;
         this.category = category;
         this.images = images;
-        this.pdf = pdf;
-    }
-
-    @Override
-    public String toString() {
-        return "Books{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", description='" + description + '\'' +
-                ", language='" + language + '\'' +
-                ", category='" + category + '\'' +
-                ", images='" + images + '\'' +
-                ", pdf='" + pdf + '\'' +
-                '}';
     }
 
     public int getId() {
@@ -83,20 +67,11 @@ public class Books {
         this.category = category;
     }
 
-    public String getImages() {
+    public int getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(int images) {
         this.images = images;
     }
-
-    public String getPdf() {
-        return pdf;
-    }
-
-    public void setPdf(String pdf) {
-        this.pdf = pdf;
-    }
 }
-

@@ -5,12 +5,11 @@ public class loggedIn {
     private String email;
     private String username;
    private String password;
-   private byte[] picture;
+   private String picture;
    private Boolean verified;
    private int viewBooks;
-   private int borrowBooks;
 
-    public loggedIn(int id, String email, String username, String password, byte[] picture, Boolean verified, int viewBooks, int borrowBooks) {
+    public loggedIn(int id, String email, String username, String password, String picture, Boolean verified, int viewBooks) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -18,7 +17,19 @@ public class loggedIn {
         this.picture = picture;
         this.verified = verified;
         this.viewBooks = viewBooks;
-        this.borrowBooks = borrowBooks;
+    }
+
+    @Override
+    public String toString() {
+        return "loggedIn{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", picture='" + picture + '\'' +
+                ", verified=" + verified +
+                ", viewBooks=" + viewBooks +
+                '}';
     }
 
     public int getId() {
@@ -53,11 +64,11 @@ public class loggedIn {
         this.password = password;
     }
 
-    public byte[] getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(byte[] picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
@@ -75,13 +86,5 @@ public class loggedIn {
 
     public void setViewBooks(int viewBooks) {
         this.viewBooks = viewBooks;
-    }
-
-    public int getBorrowBooks() {
-        return borrowBooks;
-    }
-
-    public void setBorrowBooks(int borrowBooks) {
-        this.borrowBooks = borrowBooks;
     }
 }

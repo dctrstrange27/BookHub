@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.example.jason_valley.R;
-import com.example.jason_valley.most_popular.across;
 import com.github.barteksc.pdfviewer.PDFView;
 
 public class coming extends Fragment {
@@ -30,7 +29,7 @@ public class coming extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("The-Coming-Technological-Singularity.pdf").load();
+                showPdf.fromAsset("coming.pdf").load();
                 coming.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

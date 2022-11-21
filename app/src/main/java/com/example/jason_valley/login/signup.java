@@ -25,19 +25,23 @@ import com.example.jason_valley.homeFragment.mainHome;
 import com.example.jason_valley.usermodel.loggedIn;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class signup extends AppCompatActivity {
-    TextInputEditText password, email, username, conPassword;
+    TextInputEditText password;
+    static TextInputEditText email;
+    TextInputEditText username;
+    TextInputEditText conPassword;
     Button signup;
     TextView signin;
     EditText code;
     String getCode = "";
-
-
+    loggedIn loggedIn;
+    static int check = 0;
     boolean sendAgain = false;
     Random rand = new Random();
 
@@ -91,6 +95,13 @@ public class signup extends AppCompatActivity {
             }
         });
     }
+    //get Email
+    public static String getEmail(){
+        return check > 0 ? email.getText().toString() : null;
+    }
+    public static int check(){
+        return check;
+    }
     //verify user
     public void verifyUser(){
             try {
@@ -99,12 +110,13 @@ public class signup extends AppCompatActivity {
             String usr = username.getText().toString();
             String paswd = password.getText().toString();
             String hash = BCrypt.withDefaults().hashToString(12, paswd.toCharArray());
-            loggedIn loggedIn;
-            loggedIn = new loggedIn(-1,e,usr,hash,null,false,0,0);
-            Boolean create = db.newUserLogIn(loggedIn);
+
+            loggedIn = new loggedIn(-1,e,usr,hash,null,false,0);
+            Boolean create = db.createUser(loggedIn);
             if(create){
                 Toast.makeText(signup.this,"Successfully Registered!",Toast.LENGTH_SHORT).show();
                 welcome();
+                check = 1;
             }else {
                 Toast.makeText(signup.this,"Failed creating an Account",Toast.LENGTH_SHORT).show();
             }
@@ -121,7 +133,6 @@ public class signup extends AppCompatActivity {
 
     /// Verification diag
     public void verify(){
-
         Dialog verify = new Dialog(signup.this);
         verify.setContentView(R.layout.send_code);
         verify.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -135,6 +146,11 @@ public class signup extends AppCompatActivity {
         TextView c =  verify.findViewById(R.id.countdown);
         TextView exp = verify.findViewById(R.id.expired);
         TextView resend = verify.findViewById(R.id.resend);
+
+        DataBase b = new DataBase(signup.this);
+
+        List<loggedIn> users = b.getAllUser();
+        System.out.println(users.toString());
 
         CountDownTimer start = new CountDownTimer(300000, 1000) {
             @SuppressLint("SetTextI18n")

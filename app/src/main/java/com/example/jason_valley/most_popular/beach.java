@@ -29,7 +29,7 @@ public class beach extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Beach-Town-Apocalypse.pdf").load();
+                showPdf.fromAsset("beach.pdf").load();
                 beach.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

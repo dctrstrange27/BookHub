@@ -20,7 +20,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class login extends AppCompatActivity {
-    TextInputEditText email, password;
+    TextInputEditText password;
+    static int check = 0;
+    static TextInputEditText email;
     Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class login extends AppCompatActivity {
                         if (checkPass.verified) {
                             Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
 
+                            check = 1;
                         } else {
                             Toast.makeText(login.this, "wrong credentials! Check email and password", Toast.LENGTH_LONG).show();
                         }
@@ -74,11 +77,20 @@ public class login extends AppCompatActivity {
             }
         });
     }
+    public static int check(){
+        return check;
+    }
+    public static String getEmail(){
+        return check > 0 ? email.getText().toString() : null;
+    }
+    public static Boolean ifLogin(){
+        return true;
+    }
+
     public Boolean doesExist(String eUser) {
         DataBase db = new DataBase(login.this);
         return db.doesExist(eUser);
     }
-
     //Delete specific users
     public void deleteUser() {
         DataBase db = new DataBase(login.this);

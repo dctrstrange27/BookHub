@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ScrollView;
 
 import com.example.jason_valley.R;
-import com.example.jason_valley.most_popular.across;
 import com.github.barteksc.pdfviewer.PDFView;
 
 public class tarzan extends Fragment {
@@ -30,7 +29,7 @@ public class tarzan extends Fragment {
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPdf.fromAsset("Tarzan-of-the-Apes.pdf").load();
+                showPdf.fromAsset("tarzan.pdf").load();
                 tarzan.setVisibility(View.GONE);
                 read.setVisibility(View.GONE);
             }

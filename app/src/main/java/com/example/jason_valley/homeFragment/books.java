@@ -102,21 +102,21 @@ public class books extends Fragment {
         List<String> desc = new ArrayList<>();
         List<String> lang = new ArrayList<>();
         List<String> cat = new ArrayList<>();
-        hori = v.findViewById(R.id.hori);
-        hori2 = v.findViewById(R.id.hori2);
-        hori3 = v.findViewById(R.id.hori3);
-        hori4 = v.findViewById(R.id.hori4);
-        hori.scrollTo(hori.getRight()/2,0);
-
-        ViewTreeObserver vto = hori.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            public void onGlobalLayout() {
-                hori.scrollTo(hori.getChildAt(0).getWidth()/3, 0);
-                hori2.scrollTo(hori2.getChildAt(0).getWidth()/10, 0);
-                hori3.scrollTo(hori3.getChildAt(0).getWidth()/20, 0);
-                hori4.scrollTo(hori4.getChildAt(0).getWidth()/2, 0);
-            }
-        });
+//        hori = v.findViewById(R.id.hori);
+//        hori2 = v.findViewById(R.id.hori2);
+//        hori3 = v.findViewById(R.id.hori3);
+//        hori4 = v.findViewById(R.id.hori4);
+//        hori.scrollTo(hori.getRight()/2,0);
+//
+//        ViewTreeObserver vto = hori.getViewTreeObserver();
+//        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            public void onGlobalLayout() {
+//                hori.scrollTo(hori.getChildAt(0).getWidth()/3, 0);
+//                hori2.scrollTo(hori2.getChildAt(0).getWidth()/10, 0);
+//                hori3.scrollTo(hori3.getChildAt(0).getWidth()/20, 0);
+//                hori4.scrollTo(hori4.getChildAt(0).getWidth()/2, 0);
+//            }
+//        });
 
 
         book = v.findViewById(R.id.books);
@@ -160,7 +160,7 @@ public class books extends Fragment {
         king.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, king_solomon.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, king_solomon.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -168,21 +168,21 @@ public class books extends Fragment {
         cleo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, cleo.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, cleo.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
         across.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, across.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, across.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
         tarzan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, tarzan.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, tarzan.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -191,7 +191,7 @@ public class books extends Fragment {
         beach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, beach.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, beach.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -199,7 +199,7 @@ public class books extends Fragment {
         color.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, color.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, color.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -207,14 +207,14 @@ public class books extends Fragment {
         invi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, raven.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, raven.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
         mostly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, mostly.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, mostly.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -222,7 +222,7 @@ public class books extends Fragment {
         raven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, invi.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, invi.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -232,7 +232,7 @@ public class books extends Fragment {
         alice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, alice.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, alice.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -240,7 +240,7 @@ public class books extends Fragment {
         dracu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, dracula.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, dracula.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -248,14 +248,14 @@ public class books extends Fragment {
         fly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.fly.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, com.example.jason_valley.recommended.fly.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
         les.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, les.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, les.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -263,7 +263,7 @@ public class books extends Fragment {
         sher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, sher.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, sher.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -275,7 +275,7 @@ public class books extends Fragment {
         crack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.computer.crack.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, com.example.jason_valley.computer.crack.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -283,7 +283,7 @@ public class books extends Fragment {
         economy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.computer.economy.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, com.example.jason_valley.computer.economy.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -291,14 +291,14 @@ public class books extends Fragment {
         hacker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, hacker.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, hacker.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
         coming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, com.example.jason_valley.recommended.coming.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, com.example.jason_valley.recommended.coming.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });
@@ -306,7 +306,7 @@ public class books extends Fragment {
         jargon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.frag, comp.class, null).commit();
+                getChildFragmentManager().beginTransaction().setReorderingAllowed(true).replace(R.id.bookFrag, comp.class, null).commit();
                 book.setVisibility(View.GONE);
             }
         });

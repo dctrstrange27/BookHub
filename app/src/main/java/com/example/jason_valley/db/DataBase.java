@@ -18,7 +18,7 @@ public class DataBase extends SQLiteOpenHelper {
     public static final String books = "BOOKS";
 
     public DataBase(Context context){
-        super(context, "BOOKHUB.db",null,7);
+        super(context, "BOOKHUB.db",null,1);
     }
     @Override
     public void onCreate(SQLiteDatabase bookHub) {
@@ -118,7 +118,6 @@ public class DataBase extends SQLiteOpenHelper {
         return userInfo;
     }
 
-
     public List<Books> getAllBooks(){
         List<Books> fetch = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -189,6 +188,19 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase bookHub = this.getWritableDatabase();
         bookHub.delete(books, null, null);
     }
+
+    public boolean update(String username,String password, String email){
+        SQLiteDatabase  db = this.getWritableDatabase();
+        ContentValues cont = new ContentValues();
+        cont.put("username", username);
+        cont.put("password", password);
+        long res =  db.update(users,cont,"email=?",new String[]{email});
+        return res != -1;
+    }
+
+
+
+
 
 }
 

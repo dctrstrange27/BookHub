@@ -110,7 +110,6 @@ public class signup extends AppCompatActivity {
             String usr = username.getText().toString();
             String paswd = password.getText().toString();
             String hash = BCrypt.withDefaults().hashToString(12, paswd.toCharArray());
-
             loggedIn = new loggedIn(-1,e,usr,hash,null,false,0);
             Boolean create = db.createUser(loggedIn);
             if(create){
@@ -124,12 +123,10 @@ public class signup extends AppCompatActivity {
             Toast.makeText(signup.this, "Error creating User", Toast.LENGTH_SHORT).show();
         }
     }
-
     public Boolean doesExist(String eUser){
         DataBase db = new DataBase(signup.this);
         return db.doesExist(eUser);
     }
-
 
     /// Verification diag
     public void verify(){
@@ -153,7 +150,6 @@ public class signup extends AppCompatActivity {
         System.out.println(users.toString());
 
         CountDownTimer start = new CountDownTimer(300000, 1000) {
-            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long mili) {
                 c.setText(""+(mili/1000)+" Seconds..");
@@ -171,7 +167,6 @@ public class signup extends AppCompatActivity {
             }
         };
         start.start();
-
         resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,7 +219,7 @@ public class signup extends AppCompatActivity {
         });
     }
     public boolean sendMail(String e){
-        String subject = "VERIFICATION CODE";
+        String subject = "Email Verification";
         int random =  rand.nextInt(10000);
         String code = Integer.toString(random);
         getCode = code;

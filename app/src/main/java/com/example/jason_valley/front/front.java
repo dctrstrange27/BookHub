@@ -23,6 +23,7 @@ import com.example.jason_valley.R;
 import com.example.jason_valley.db.DataBase;
 import com.example.jason_valley.homeFragment.books;
 import com.example.jason_valley.login.dialog;
+import com.example.jason_valley.login.login;
 import com.example.jason_valley.login.signup;
 import com.example.jason_valley.usermodel.Books;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,23 +32,15 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class front extends AppCompatActivity {
-
-    TextInputEditText title, author, description, language,category ;
-    ImageView picture;
-    Button add;
-    Bitmap bitmap;
     DataBase b = new DataBase(front.this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.front);
        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-
-//        add = findViewById(R.id.add);
-          Boolean c =  b.checkBooks("Cleopatra");
-         if(!c) addAdvetureBook();
-          openLogin();
+         Boolean c =  b.checkBooks("Cleopatra");
+         if(!c) allBooks();
+         openLogin();
 //         b.deleteBooks();
 //        add = findViewById(R.id.login);
 //        add.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +51,7 @@ public class front extends AppCompatActivity {
 //        });
     }
     //creating books
-   public void addAdvetureBook(){
-//       String aut = author.getText().toString();
-//       String desc = description.getText().toString();
-//       String lang = language.getText().toString();
-//       String cat = category.getText().toString();
+   public void allBooks(){
        //Adventure
        Books across_asia_on_a_bicycle = new Books(
                -1,"Across Asia on a Bicycle",
@@ -293,8 +282,6 @@ public class front extends AppCompatActivity {
                "Myth",
                "science",
                "science");
-
-
        Boolean i1 = b.createBooks(across_asia_on_a_bicycle);
        Boolean i2 = b.createBooks(journey);
        Boolean i3 = b.createBooks(cleopatra);
@@ -320,27 +307,15 @@ public class front extends AppCompatActivity {
        Boolean i23 = b.createBooks(myths);
        Boolean i24 = b.createBooks(nature);
        Boolean i25 = b.createBooks(science);
-
-
-
-
-
    }
 
     public void openLogin(){
         Button login =  findViewById(R.id.login);
         Button signup =  findViewById(R.id.signup);
-        Intent goToLogin = new Intent(this, com.example.jason_valley.login.login.class);
-        Intent goToSignup = new Intent(this, com.example.jason_valley.login.signup.class);
+        Intent goToLogin = new Intent(this, login.class);
+        Intent goToSignup = new Intent(this, signup.class);
         //route
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(goToLogin);
-            }});
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {   startActivity(goToSignup);}});
+        login.setOnClickListener(aegi -> startActivity(goToLogin));
+        signup.setOnClickListener(aegi -> startActivity(goToSignup));
     }
-
 }

@@ -43,36 +43,34 @@ public class login extends AppCompatActivity {
         email = findViewById(R.id.userl);
         password = findViewById(R.id.passl);
         login = findViewById(R.id.btnlogin);
-        login.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void onClick(View view) {
-                String e = email.getText().toString();
-                String pass = password.getText().toString();
-                DataBase db = new DataBase(login.this);
+        login.setOnClickListener(aegi -> {
+            String e = email.getText().toString();
+            String pass = password.getText().toString();
+            DataBase db = new DataBase(login.this);
 
-                if (e.equals("") || pass.equals("")) {
-                    Toast.makeText(login.this, "Missing Payloads!", Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    if (doesExist(e)) {
-                        Cursor res = db.checkUser(e);
-                        String passw = null;
-                        if (res.moveToNext()) {
-                            passw = res.getString(3);
-                        }
-                        BCrypt.Result checkPass = BCrypt.verifyer().verify(pass.toCharArray(), passw);
-                        if (checkPass.verified) {
-                            Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
-                            Intent goToHome = new Intent(getApplicationContext(), mainHome.class);
-                            startActivity(goToHome);
-                            check = 1;
-                        } else {
-                            Toast.makeText(login.this, "wrong credentials! Check email and password", Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        Toast.makeText(login.this, "User not Existing!", Toast.LENGTH_LONG).show();
+
+            if (e.equals("") || pass.equals("")) {
+                Toast.makeText(login.this, "Missing Payloads!", Toast.LENGTH_LONG).show();
+                return;
+            } else {
+                if (doesExist(e)) {
+                    Cursor res = db.checkUser(e);
+                    String passw = null;
+                    if (res.moveToNext()) {
+                        passw = res.getString(3);
                     }
+                    BCrypt.Result checkPass = BCrypt.verifyer().verify(pass.toCharArray(), passw);
+                    if (checkPass.verified) {
+                        Toast.makeText(login.this, "Login Success!", Toast.LENGTH_LONG).show();
+                        Intent goToHome = new Intent(getApplicationContext(), mainHome.class);
+                        startActivity(goToHome);
+
+                        check = 1;
+                    } else {
+                        Toast.makeText(login.this, "wrong credentials! Check email and password", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(login.this, "User not Existing!", Toast.LENGTH_LONG).show();
                 }
             }
         });

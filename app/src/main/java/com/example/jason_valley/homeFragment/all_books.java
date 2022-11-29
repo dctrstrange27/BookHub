@@ -32,8 +32,6 @@ public class all_books extends Fragment {
     TextView genre;
     Button read;
     ScrollView all;
-
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,8 +55,6 @@ public class all_books extends Fragment {
         genre.setText(bundle.getString("genre"));
         images.setImageResource(bundle.getInt("picture"));
         String name = bundle.getString("pdf");
-
-
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,9 +63,6 @@ public class all_books extends Fragment {
                 read.setVisibility(View.GONE);
             }
         });
-
-
-
 
 
         return view;

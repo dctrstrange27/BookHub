@@ -43,12 +43,11 @@ public class Search extends Fragment  {
         Button show;
         show = v.findViewById(R.id.show);
         LinearLayout hide;
-        hide = v.findViewById(R.id.scroll);
-
+            hide = v.findViewById(R.id.scroll);
 
         books = b.getAllBooks();
         allBooks = new ArrayList<>(books);
-         booksAdapter = new BooksAdapter(v.getContext(), allBooks);
+        booksAdapter = new BooksAdapter(v.getContext(), allBooks);
         bookL.setAdapter(booksAdapter);
         bookL.setClickable(true);
 
@@ -104,6 +103,4 @@ public class Search extends Fragment  {
         });
         return  v;
     }
-
-
 }
